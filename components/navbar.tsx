@@ -21,9 +21,9 @@ export const Navbar = () => {
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+          <NextLink className="flex justify-start items-center gap-4" href="/">
+            <Logo size={56} />
+            <p className="font-bold text-inherit uppercase text-xl">Kapitálek</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
