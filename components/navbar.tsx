@@ -18,12 +18,12 @@ import { Logo } from "@/components/icons";
 export const Navbar = () => {
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
+    <HeroUINavbar maxWidth="xl" position="sticky" className="py-4 border-b border-stroke">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-4" href="/">
-            <Logo size={56} />
-            <p className="font-bold text-inherit uppercase text-xl">Kapitálek</p>
+          <NextLink className="flex justify-start items-center gap-6" href="/">
+            <Logo size={48} />
+            <p className="font-medium tracking-kapitalek text-inherit uppercase text-xl">Kapitálek</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
@@ -32,13 +32,13 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <ul className="hidden lg:flex gap-4 justify-end">
+        <ul className="hidden lg:flex gap-16 justify-end ">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "text-lg data-[active=true]:text-primary data-[active=true]:font-light",
                 )}
                 color="foreground"
                 href={item.href}
@@ -56,17 +56,17 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+          {siteConfig.navItems.map((item, index) => (
+            <NavbarMenuItem key={`${item.href}-${index}`}>
               <Link
                 color={
                   index === 2
                     ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
+                    : index === siteConfig.navItems.length - 1
                       ? "danger"
                       : "foreground"
                 }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label.toUpperCase()}
