@@ -1,60 +1,59 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
-  navItems: [
-    {
-      label: "Domů",
-      href: "/",
-    },
+  name: "KAPITÁLEK: Knihařské mistrovství v každé vazbě",
+  description: "Vytváříme vyjímečné knihy pro všechny kdo ocení kvalitu a cit pro detail.",
+  navItemsLeft: [
     {
       label: "Naše služby",
-      href: "/docs",
+      href: "/#sluzby",
     },
     {
+      label: "Portfolio",
+      href: "/#portfolio",
+    },
+  ],
+  navItemsRight: [
+    {
       label: "O nás",
-      href: "/pricing",
+      href: "/#o-nas",
     },
     {
       label: "Kontakt",
-      href: "/blog",
+      href: "/#kontakt",
+    },
+  ],
+  navItems: [
+    {
+      label: "Domů",
+      href: "/#top",
+    },
+    {
+      label: "Naše služby",
+      href: "/#sluzby",
+    },
+    {
+      label: "Portfolio",
+      href: "/#portfolio",
+    },
+    {
+      label: "O nás",
+      href: "/#o-nas",
+    },
+    {
+      label: "Kontakt",
+      href: "/#kontakt",
     }
   ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
-  ],
+  socialLinks: {
+    instagram: "https://instagram.com/kapitalek",
+    facebook: "https://facebook.com/kapitalek",
+    linkedin: "https://linkedin.com/company/kapitalek",
+  },
+  cta: {
+    label: "Objednat vazbu",
+    href: "/#kontakt",
+  },
   links: {
     // github: "https://github.com/heroui-inc/heroui",
     // twitter: "https://twitter.com/hero_ui",
