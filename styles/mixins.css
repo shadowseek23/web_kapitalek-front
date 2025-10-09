@@ -1,0 +1,65 @@
+$mobile: 360px;
+$tablet: 769px; /* >> 769px */  
+$desktop: 1040px; /* >> 1024px */
+$widescreen: 1216px; /* >> 1216px */
+$fullhd: 1408px; /* >> 1408px */
+
+@define-mixin tiny-mobile {
+    @media screen and (max-width: calc($mobile - 1px)) { @mixin-content; }
+}
+@define-mixin mobile {
+    @media screen and (max-width: calc($tablet - 1px)) { @mixin-content; }
+}
+@define-mixin touch {/* = until-desktop */
+    @media screen and (max-width: calc($desktop - 1px)) { @mixin-content; }
+}
+@define-mixin until-desktop { /* = touch */
+    @media screen and (max-width: calc($desktop - 1px)) { @mixin-content; }
+}
+@define-mixin until-widescreen {
+    @media screen and (max-width: calc($widescreen - 1px)) { @mixin-content; }
+}
+@define-mixin until-fullhd {
+    @media screen and (max-width: calc($fullhd - 1px)) { @mixin-content; }
+}
+
+@define-mixin from-mobile {
+    @media screen and (min-width: $mobile) { @mixin-content; }
+}
+@define-mixin from-tablet {
+    @media screen and (min-width: $tablet) { @mixin-content; }
+}
+@define-mixin from-desktop {
+    @media screen and (min-width: $desktop) { @mixin-content; }
+}
+@define-mixin from-widescreen {
+    @media screen and (min-width: $widescreen) { @mixin-content; }
+}
+@define-mixin from-fullhd {
+    @media screen and (min-width: $fullhd) { @mixin-content; }
+}
+
+@define-mixin only-mobile {
+    @media screen and (min-width: $mobile) and (max-width: calc($tablet - 1px)) { @mixin-content; }
+}
+@define-mixin only-tablet {
+    @media screen and (min-width: $tablet) and (max-width: calc($desktop - 1px)) { @mixin-content; }
+}
+@define-mixin only-desktop {
+    @media screen and (min-width: $desktop) and (max-width: calc($widescreen - 1px)) { @mixin-content; }
+}
+@define-mixin only-widescreen {
+    @media screen and (min-width: $widescreen) and (max-width: calc($fullhd - 1px)) { @mixin-content; }
+}
+@define-mixin only-fullhd {
+    @media screen and (min-width: $fullhd) { @mixin-content; }
+}
+
+@define-mixin hravy-transition {
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--transition-function);
+}
+@define-mixin hravy-transition-slow {
+    transition-duration: var(--transition-duration-slow);
+    transition-timing-function: var(--transition-function);
+}

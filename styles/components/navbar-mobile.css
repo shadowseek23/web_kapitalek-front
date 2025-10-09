@@ -1,0 +1,429 @@
+@import "../mixins.css";
+
+/*
+ * header -- mobile
+ */
+.navbar {/*mainmenu*/
+    @mixin touch {
+        padding: 4rem 0 8rem 0;
+        &, &__left, &__right {
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            flex: 0 1 3rem;
+        }
+    }
+
+    &__item { 
+        @mixin touch {
+            color: white;
+            flex: 0 1 1rem;
+        }
+        &--has-button:has(#login) {
+            #login {
+                @mixin touch {
+                    color: white;
+                    border-color: white;
+                    margin-top: 2rem;
+                    font-size: 1.6rem;
+                    font-weight: 800;
+                    padding: 0.6em 2em;
+                    &:before {
+                        background-color: white;                        
+                    }
+                    &:hover {
+                        color: var(--color-purple);
+                    }
+                }
+                    
+                    
+                @mixin tiny-mobile {
+                    font-size: 9vw;
+                }
+            }
+        }
+        /* common for items that have links*/
+        @mixin touch {      
+            &--link,
+            &--has-dropdown { 
+                position: relative;
+
+                &:after {
+                    content: " ";
+                    display: block; 
+                    position: absolute;
+                    left: 2rem; right: 2rem;
+                    bottom: 0;
+                    height: 2px;
+                    width: 50%;
+                    max-width: 320px;
+                    margin: auto;
+                    border-radius: 5px;
+                    background: rgba(255,255,255,0.08);
+                }                
+            }
+            &--last-child&--link:after {
+                display: none !important;
+            }
+        }
+        
+        @mixin touch { 
+            /* common for top level links */    
+            &--link,
+            &--has-dropdown &-inner-link { 
+                width: 100%;
+                color: white; /* 3 */
+                height: 100%;
+                padding: 2rem 0.5rem;
+                font-size: 1.6rem;
+                text-decoration: none;
+            }
+
+            /* common :hover for top level links */
+            &--link:hover,
+            &--has-dropdown:hover .navbar__item-inner-link { 
+                z-index: 100;
+                &:before {        
+                    opacity: 1;                
+                    left: 0.6em; top: 0.1em; right: 0.6em; bottom: 0.1em;
+                    height: 2.6em;
+                    width: 80%;
+                    max-width: 16em;
+                    z-index: -1;
+                    background: rgba(255,255,255,0.1)
+                }
+            }
+            &--has-dropdown&--opened-dropdown .navbar__item-inner-link:hover {
+                /* color: var(--color-almost-black); */
+                
+                &:after {
+                    /* filter: invert(0); */
+                }
+            }
+            &--has-dropdown .navbar__item-inner-link:hover {
+                cursor: pointer;
+            }
+        }
+        
+        @mixin tiny-mobile {
+            &--link,
+            &--has-dropdown &-inner-link { 
+                
+                    font-size: 9vw;
+                
+            }
+        }
+    }
+    @mixin touch {
+        /* dropdown */
+        &__item--has-dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6vw;
+        }
+        &__item--has-dropdown &__item-inner-link { /*dropdown - innerlink */
+            height: auto;
+            position: relative;
+            &:after {
+                filter: invert(2) brightness(2);
+                transform: rotate(0);
+                @mixin hravy-transition;
+                transition-property: transform;
+            }
+        }
+        &__item&__item--opened-dropdown {
+            .navbar__item-inner-link {
+                /* font-weight: 900; */
+                z-index: 100;
+                &:after {
+                    transform: rotate(90deg);
+                }
+            }
+            .navbar__dropdown {
+                padding-top: 0.4rem;
+                padding-bottom: 0.4rem;
+                margin-bottom: 2.6rem;
+                opacity: 1;
+                max-height: 100vh;
+            }
+        }
+        &__dropdown {
+            display: flex;
+            flex-direction:column;
+            max-height: 1px;
+            background-color: rgba(255,255,255,0.12);
+            border-radius: 2rem;
+            
+            padding-bottom: 0rem;
+            width: 100%;
+            max-width: 500px;
+            opacity: 0;
+            
+            @mixin hravy-transition;
+            transition-property: max-height;
+
+
+            &-item {
+                color: white;
+                padding: 1.4rem;
+                font-size: 2rem;
+                font-weight: 700;
+                z-index: 50;
+
+                @mixin tiny-mobile {
+                    font-size: 10vw;
+                }
+                &:before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    left: 50%; top: 50%; right: 50%; bottom: 50%;
+                    height: 1%;
+                    margin: auto;
+                    border-radius: 50px;
+                    z-index: -1;
+                    background: var(--color-purple);
+                    opacity: 0;
+                    
+                    @mixin hravy-transition;
+                    transition-timing-function: "ease";
+                    transition-property: all;
+                }
+                &:after {
+                    background: rgba(255,255,255,0.1) !important;
+                    width: 40% !important;
+                    height: 2px !important;
+                    margin: auto;
+                }
+                &:hover {
+                    color: white;
+                    &:before {                             
+                        opacity: 1;                
+                        left: 4vw; top: 0.1em; right: 4vw; bottom: 0.1em;
+                        height: 1.6em;
+                        max-width: 16em;
+                        z-index: -1;
+                        background: rgba(255,255,255,0.1)
+                    }
+                }
+            }
+        }
+        
+        /* logo */
+        &__logo, &__logo-image {
+            width: 100%;
+        }
+        &__logo {
+            order: -3;            
+            &-link {
+                text-align: center;
+            }
+            &-image {
+                margin: auto;
+                width: 100%;
+                max-width: 12rem;
+                &--large {}
+                &--sticky {
+                    display: none;
+                }
+            }
+        }   
+    }
+} 
+.header {
+    /* .header__mainnav - displayed as fullscreen navigation on mobile, displayed is main navbar on desktop */
+    @mixin touch {
+        /* vychozi hodnoty, mobilenav closed */  
+        &__mainnav {     
+            position: fixed;
+            top: 0; right: 0;      
+            z-index: 40;
+            background-color: rgba(0,0,0,0.4);
+             
+            &, &-container {
+                overflow: hidden;   
+                max-height: 0;
+                max-width: 0;
+                @mixin hravy-transition;
+                transition-property: max-width, max-height, border-radius;
+                width: 100vw;
+                height: 100vh;
+                /* border-radius: 50vw;                */
+            }
+            &-container {
+                overflow-y: scroll;
+                background: var(--color-purple);
+            }
+            .navbar {
+                width: 100%;
+                min-height: 100vh;
+                height: auto;
+            }            
+        }
+        &--mobilenav-opened {
+            position: fixed;
+            overflow: hidden;
+        }  
+        &--mobilenav-opened &__mainnav {
+            max-width: 100vw;
+            &, &-container {            
+                max-height: 100vh;
+                border-radius: 0; 
+            }
+            &-container {
+                position: absolute;
+                top: 0; right: 0;
+                /* max-width: 720px; >> nevypadá dobře kvuli posouvajícímu se mobilebaru */
+                max-width: 100vw;
+            }            
+        }    
+        &--mobilenav-opened .alert-section {
+            display: none;
+        } 
+        &--mobilenav-opened &__mobilebar {
+            max-height: 5.5rem;
+        }
+        &--mobilenav-opened &__hamburger &__hamburger-bar,
+        &--mobilenav-opened &__hamburger:hover &__hamburger-bar {            
+                background-color: white;
+                top: 50%;        
+                
+                box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);              
+
+                &:nth-child(1) {
+                    transform: translateY(-50%) rotate(-225deg);   
+                }
+                &:nth-child(2) {
+                    transform: translateY(-50%) rotate(-315deg);                   
+                }
+                &:nth-child(3) {             
+                    transform: translateY(-50%) rotate(-315deg);                
+                }       
+        }
+    
+    }
+    &__mobilebar {
+        @mixin from-desktop {
+            display: none;
+        }
+        @mixin touch {
+            display: block;
+        }   
+        height: 72px;
+
+        max-height: 20rem;
+        @mixin hravy-transition;
+        transition-property: max-height;
+        background: white;
+        box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.12), 0 -3px 0 0 var(--color-boxshadow), 0 3px 0 0 var(--color-boxshadow);;
+        top: 0;
+
+        &-container {
+            width: 92%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            &-image {
+                height: 80%;
+                &--no-text {
+                    display: none;
+                }
+            }
+        }
+      
+    }
+    &__hamburger { /* a element - link*/
+
+        position: relative;
+        cursor: pointer;
+        
+        padding-right: 2rem;
+        padding-left: 1rem;
+        margin-right: -1rem;
+        height: 100%;
+        
+        z-index: 50;
+
+        display: flex;
+        align-items: center;
+
+        &-el { /*element that contains bars */
+            position: relative;
+            width: 30px;
+            height: 24px;
+            margin: auto;
+        }
+
+        &:hover &-bar {
+            background-color: var(--color-purple);
+        }
+        &-bar {
+            position: absolute;
+            border-radius: 1rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            @mixin hravy-transition;
+            transition-property: all;
+            box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6);
+            /* border: 0.5px solid rgba(0, 0, 0, 0.8); */
+            right: 0;
+            height: 4px;
+            width: 100%;
+                      
+            &:nth-child(1) {
+                top: 0;
+            }
+            &:nth-child(2) {
+                top: 50%; 
+                margin: auto;
+                transform: translateY(-50%);
+                
+            }
+            &:nth-child(3) {
+                top: 100%;                
+                transform: translateY(-100%);               
+            }
+        }
+    }
+    
+    @mixin touch { /* fixed header on mobile */
+        &--not-top:not(&--mobilenav-opened) {
+            .header__mobilebar {
+                max-height: 50px;
+                &-logo {
+                    max-height: 3.8rem;
+                    &-image {
+                        &--no-text {
+                            display: block;
+                        }
+                        &--with-text {
+                            display: none;
+                        }
+                    }
+                }
+            }   
+            .header__hamburger-el {
+                transform: scale(0.9);
+            } 
+        }
+        &--not-top {
+            top: 0; 
+            position: fixed;
+        }
+    }
+}
+/* tohle je docela hack - todo */
+body:has(.header--mobilenav-opened) { 
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}

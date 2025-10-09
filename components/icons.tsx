@@ -2,6 +2,63 @@ import * as React from "react";
 
 import { IconSvgProps } from "@/types";
 
+export const TriangleIcon = ({ width = "14", height = "13", position = "down" }) => {
+  let className = "";
+  switch (position) {
+    case "down":
+      className = "rotate-180";
+      break;
+    case "up":
+      className = "";
+      break;
+    case "left":
+      className = "rotate-90";
+      break;
+    case "right":
+      className = "-rotate-90";
+      break;
+    default:
+      className = "";
+  }
+	return (
+		<svg width={width} height={height} className={className} viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M7 0.758789L13.9282 12.7588L0.0717969 12.7588L7 0.758789Z" fill="#CCC8C8"/>
+		</svg>
+	);
+}
+export const ArrowIcon = (strokeWidth = 1, stroke = "#616161") => {
+	return (
+    <svg className="h-5"
+      width="154" height="27" viewBox="0 0 154 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.699219 13.8154L152.404 13.7695" stroke={stroke} strokeWidth={strokeWidth}/>
+      <line x1="140.107" y1="26.4609" x2="153.147" y2="13.4209" stroke={stroke} strokeWidth={strokeWidth} />
+      <line y1="-0.5" x2="17.6765" y2="-0.5" transform="matrix(0.7045 0.709704 0.709704 -0.7045 140.641 0.816406)" stroke={stroke} strokeWidth={strokeWidth}/>
+    </svg>
+	);
+}
+export const ArrowShortIcon = ({direction = "left", strokeWidth = 1, stroke = "#616161"}) => {
+	let className = "";
+	switch (direction) {
+		case "right":
+			className = "rotate-180";
+			break;
+		case "left":
+			className = "";
+			break;
+		default:
+			className = "";
+	}
+	return (
+    <span className={className}>
+      <svg width="82" height="27" className={className} viewBox="0 0 82 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M81.1914 13.4316H1.09595" stroke={stroke} strokeWidth={strokeWidth}/>
+        <line y1="-0.5" x2="18.4414" y2="-0.5" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 13.0391 26.4766)" stroke={stroke} strokeWidth={strokeWidth}/>
+        <line x1="13.2142" y1="0.830766" x2="0.761101" y2="13.3759" stroke={stroke} strokeWidth={strokeWidth}/>
+      </svg>
+    </span>
+	);
+}
+
 export const Logo: React.FC<IconSvgProps> = ({
   size = 36,
   width,

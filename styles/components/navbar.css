@@ -1,0 +1,330 @@
+@import "../mixins.css";
+
+.navbar {/*mainmenu*/
+    display: flex;
+    justify-content: stretch;
+
+    &__left, &__right {
+        display: flex;
+        @mixin from-desktop {
+            flex: 1 1 50%;
+            align-items: stretch;
+            justify-content: space-evenly;
+        }
+    }
+    &__item {  /* ? */     
+        @mixin from-desktop {
+
+            flex: 1 1 14rem;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }   
+        @mixin until-fullhd {
+            flex: 1 1 8rem;
+        }
+
+        &--larger {
+            @mixin from-desktop {
+                width: 120%;
+            }
+            @mixin from-widescreen {
+                margin-right: 1rem;
+                flex-grow: 2;
+                flex-basis: 16rem;
+            }
+        }
+        &--nowrap {
+            text-wrap: nowrap;
+        }
+
+        &--has-button:has(#login) {
+            @mixin from-desktop {
+                flex-shrink: 1;
+                flex-grow: 1;
+                flex-basis: 16rem;
+                justify-content: center;
+            }
+            #login {
+                font-size: 1.1rem; /* 28px */
+                padding: 0.6rem 2rem;
+                text-wrap: nowrap;
+
+                @mixin from-desktop {
+                    align-self: right;
+                }
+            }
+        }
+
+        &--link {}
+
+        &--link,
+        &--has-dropdown &-inner-link {            
+            display: inline-flex;
+            align-items: center;          
+            justify-content: center;
+
+            @mixin from-desktop {
+                height: 100%;
+                padding: 2rem 1rem 2rem 1rem;
+                position: relative;
+                z-index: 2;
+
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.28rem;
+                color: var(--color-almost-black);   
+            }
+
+            &:before {
+                content: " ";
+                display: block;
+                position: absolute;
+                left: 50%; top: 50%; right: 50%; bottom: 50%;
+                height: 1%;
+                margin: auto;
+                border-radius: 50px;
+                z-index: -1;
+                background: var(--color-purple);
+                opacity: 0;
+                
+                @mixin hravy-transition;
+                transition-timing-function: "ease";
+                transition-property: all;
+            }
+        }
+        &--link:hover,
+        &--has-dropdown:hover &-inner-link {
+            color: white; /* 4 */
+
+            &:before {
+                opacity: 1;
+            }
+        }              
+        
+        &--has-dropdown {
+            display: flex;
+        }
+        &--has-dropdown &-inner-link { /* triggers dropdown */
+            @mixin from-desktop {flex-grow: 1; /*why */}
+            display: flex;
+            gap: 0.6em;
+            &:after {
+                content: " ";
+                display: block;
+                background-image: url("/images/icons/icon-triangle-chevron.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 0.6em;
+                height: 0.6em;
+                fill: var(--color-almost-black);
+                transform: rotate(90deg);
+                @mixin hravy-transition;
+                transition-property: filter, transform;
+            }          
+        }
+        &--has-dropdown:hover &-inner-link {
+            &:after {
+                filter: invert(2) brightness(2);
+            }                
+        }
+    }
+    &__item--has-dropdown:hover &__dropdown {
+        @mixin from-desktop {  
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+        }
+    }
+    &__dropdown {
+        display: none;
+        opacity: 0.1;        
+        overflow: hidden;
+        z-index: 100;
+
+        @mixin from-desktop {       
+            width: 240px; 
+            position: absolute;
+            top: 80%;
+            background: white;
+            box-shadow: 0px -2px 40px rgba(0, 0, 0, 0.08), 0px 7px 0px rgba(54, 54, 54, 0.08);
+            border-radius: var(--border-radius-lg);
+        }
+
+        &-item { /* predpokladame link */
+            
+            text-decoration: none;
+            position: relative;
+
+            @mixin from-desktop {
+                padding: 1rem 3rem;
+                &:hover {
+                    color: white;
+                    background: var(--color-purple);
+                }
+            }
+
+            &:not(:last-child):after {
+                content: " ";
+                display: block; 
+                position: absolute;
+                left: 2rem; right: 2rem;
+                bottom: 0;
+                height: 1px;
+                width: calc(100% - 4rem);
+                background: rgba(100,100,100,0.08);
+            }
+            &--extra-item {
+                opacity: 0.6;
+            }
+        }
+    }
+    &__logo {
+    }
+   
+} 
+
+.header { /* contains alert-section, mobilebar and mainnav (both desktop and mobile) */
+    z-index: 10;
+    width: 100%;
+    max-width: 100%;
+
+    section {
+        padding: 0;
+    }
+    .button { letter-spacing: 0.03em; }
+
+    &__mainnav { /* displayed as fullscreen navigation on mobile, displayed is main navbar on desktop */
+        @mixin from-desktop {
+            background: white;
+            position: static
+        }
+        &-container {
+            @mixin only-widescreen {
+                width: calc(100% - 2rem);
+                margin: 0 1rem;
+            }
+        }
+    }
+    :not(&--not-top) {
+        .navbar {
+
+
+            &__logo,
+            &__logo-link,
+            &__logo-image { /* logo dimensions and paddings are defined in em, so changing font-size changes logo-size proportionally */
+                font-size: calc(0.9 * var(--font-size-rem));
+            }
+            @mixin only-widescreen {
+                &__logo,
+                &__logo-link,
+                &__logo-image {
+                    font-size: calc(0.85 * var(--font-size-rem));
+                }
+            }
+            @mixin only-desktop {
+                &__logo,
+                &__logo-link,
+                &__logo-image {
+                    font-size: calc(0.78 * var(--font-size-rem));
+                }
+            }
+            @mixin from-desktop {
+                height: 7.5rem;
+
+                &__item {
+                    &--link:hover,
+                    &--has-dropdown:hover .navbar__item-inner-link { 
+                        &:before {                        
+                            left: 0.6rem; top: 10%; right: 0.6rem; bottom: 10%;
+                            height: 2.95rem;
+                        }
+                    }
+                }
+                &__logo {
+                    width: 15em;
+                }
+                &__logo-link {/*wraps logo image */
+                    /*box-sizing: content-box */
+                    width: 9em !important; /*160px */          
+                    padding: 1.2em 2em;
+                    height: calc(172em / 16); 
+                }
+                &__logo-image {
+                    width: 9em !important; /*160px */     
+                    @mixin hravy-transition;
+                    transition-property: transform, opacity;
+                    
+                    transform: translateX(-3%);
+                    &--large {
+                        opacity: 1;
+                    }
+                    &--sticky {
+                        opacity: 0;
+                    }
+                }
+            }            
+        }        
+    }
+    &--not-top {   
+        @mixin from-desktop {
+            position: fixed;
+            top: 0;
+
+            .navbar-section {  
+                box-shadow: 0px -2px 40px rgba(0, 0, 0, 0.6), 0px 2px 0px rgba(54, 54, 54, 0.2);
+            }
+            .navbar {
+                height: 4rem;
+                &__item {
+                    &--link:hover,
+                    &--has-dropdown:hover .navbar__item-inner-link { 
+                        &:before {                        
+                            left: 0.8rem; top: 20%; right: 0.8rem; bottom: 20%;
+                        }
+                    }
+                }
+                &__dropdown {
+                    top: 90%;
+                }
+                &__logo,
+                &__logo-link,
+                &__logo-image { /* logo dimensions and paddings are defined in em, so changing font-size changes logo-size proportionally */
+                    font-size: calc(1 * var(--font-size-rem));
+                }
+                &__logo {
+                    width: 8.5rem;
+                }
+                &__logo-link {/*wraps logo image */
+                    width: 5em !important; /*160px */
+                    height: 64px; /*box-sizing: content-box */
+                    padding: 0.3em 1em;
+                    border-radius:  0 0 2em 2em;
+                    box-shadow: var(--box-shadow), 0px 3px 0px rgba(54, 54, 54, 0.3);
+                    @mixin hravy-transition;
+                    transition-property: padding-bottom, transform;
+                    &:hover {
+                        padding-bottom: .6rem;
+                        transform: scale(1.02);
+                    }
+                }
+                &__logo-image {
+                    width: 5em !important; /*160px */
+                    transform: translateX(3%) translateY(-10%);
+
+                    @mixin hravy-transition;
+                    transition-property: transform, opacity;
+
+                    &--large {
+                        opacity: 0;
+                    }
+                    &--sticky {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

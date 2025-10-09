@@ -7,9 +7,3 @@ export const fontSans = FontSans({
   preload: true,
 });
 
-export const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  preload: true,
-});
