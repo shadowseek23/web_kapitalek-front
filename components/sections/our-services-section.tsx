@@ -55,12 +55,13 @@ export const OurServicesSection = () => {
 			<div className="container 
 				flex flex-col items-center gap-y-vertical-gap
 				lg:gap-x-horizontal-gap
+				xl:gap-x-horizontal-gap-double
 
 				lg:max-w-full 
 				lg:grid lg:grid-cols-[var(--grid-cols-narrow-left)]
 				lg:items-start 
 			">
-				<div className="left-column
+				<div className="_left-column _headline-and-text-column
 					flex flex-col justify-start gap-4
 					max-w-[calc(600rem/16)]
 					lg:max-w-[200rem/16] 
@@ -73,22 +74,26 @@ export const OurServicesSection = () => {
 						<strong> které nejen skvěle vypadají, ale také vydrží věky... </strong>
 					</p>
 				</div>
-				{/* right column */}
-				<div className="right-column
+				<div className="_right-column _services-column
 					w-full
-					flex flex-col justify-between gap-12 
+					flex flex-col justify-between items-center gap-y-20 
 					lg:min-h-[30rem]">								
-						<Accordion className="border-y-1 px-0 border-stroke-light" 
-						dividerProps={{
-							className:"border-stroke-light"
-						}}>
+						<Accordion className="_services-accordion 
+							w-[calc(100%+2*var(--mobile-page-margin))] max-w-[calc(600rem/16)] 
+							border-y-1 px-0 mx-[calc(-1*var(--mobile-page-margin))]  border-stroke-light
+							lg:max-w-[100%]" 
+
+							dividerProps={{
+								className:"border-stroke-light"
+							}}
+						>
 							{servicesData.map((item) => (
 								<AccordionItem 
 									key={item.key} aria-label={item.ariaLabel} title={item.title}
 									indicator={<TriangleIcon />}
 									disableIndicatorAnimation={false}
 									classNames={{
-										base: "bg-white ",
+										base: "md:bg-white ",
 										heading: "",
 										trigger: "justify-between cursor-pointer px-10 py-8 pl-[calc(2vw+2.2rem)] hover:bg-beige hover:text-white hover:scale-[1.01] transition-all hover:mb-4",
 										titleWrapper: "",
@@ -103,39 +108,42 @@ export const OurServicesSection = () => {
 							))}
 						</Accordion>	
 						<div className="_button-wrapper-with-stroke 
-							grow-1 flex flex-col align-start 
-							justify-end align-center
+						w-full
+							grow-1 flex flex-col justify-end align-stretch
 							border-b-1 border-stroke-light overflow-hidden 
 
 						lg:pt-20">
 							<div className="_button-wrapper
 								grow-0 basis-auto flex justify-center
+								w-full
 								lg:justify-start">
 
-								<NextLink className="button
+								<NextLink href="/#kontakt" className="_button
 									flex justify-center items-center gap-[10%]
-									w-full max-w-[30rem]
-									px-4 py-4 m-0
-									 bg-black text-big text-white no-underline shadow-[0_0px_4rem_rgba(0,0,0,0.15)]"
-									// className="group grow-0 basis-0 
-									// 	max-w-[50rem] w-full  
-									// 	inline-flex items-center justify-between gap-8
-									// 	bg-black text-white no-underline shadow-[0_0px_4rem_rgba(0,0,0,0.15)]
-									// 	hover:bg-beige hover:text-white hover:scale-[1.01] hover:shadow-[0_0px_5rem_rgba(0,0,0,0.12)] transition-all"
-									href="/kontakt"
-								>	
-									<span className="button__text
-										text-big font-[500]">									
+									w-full max-w-[calc(460rem/16)]
+									grow-1 basis-auto
+									px-6.5 py-4.5 m-0
+									 bg-black text-big text-white no-underline shadow-[0_0px_4rem_rgba(0,0,0,0.15)]
+									 hover:bg-beige hover:text-white hover:scale-[1.01] hover:shadow-[0_0px_5rem_rgba(0,0,0,0.12)] transition-all
+								">	
+									<span className="_button__text
+										text-big font-[500] text-center leading-[1.1em]
+										lg:basis-[12rem]
+									">									
 										Objednat vazbu
 									</span>
-									<span className="button__icon">									
-										<ArrowShortIcon direction="right" strokeWidth={1} stroke="#fff" />
+									<span className="button__icon
+										max-w-[20vw]
+									">									
+										<ArrowShortIcon 
+											direction="right" 
+											strokeWidth={1} 
+											stroke="#fff"
+										/>
 									</span>
 								</NextLink>
 							</div>
-						</div>
-					
-
+						</div>			
 				</div>
 			</div>
 

@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="en">1
       <head />
       <body
         className={clsx(
@@ -46,7 +46,7 @@ export default function RootLayout({
       >
         <div id="top"></div>
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <section className="section bg-white border-default-b">
+          <section className="section bg-white md:border-b-stroke md:border-b-1">
             <div className="container">
             <NavbarDesktopCentered breakpoint="lg" />
             <MobileNav breakpoint="lg" />

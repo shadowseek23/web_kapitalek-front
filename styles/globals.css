@@ -2,27 +2,18 @@
 
 @import "tailwindcss";
 @config "../tailwind.config.js";
-@plugin "../config/hero.ts";
-
-
-/* debug breakpoints */
-/*:root {
-    --container-debug-col: teal;
-    --container-debug-col-sm: red;
-    --container-debug-col-md: green;
-    --container-debug-col-lg: blue;
-    --container-debug-col-xl: yellow;
-    --container-debug-col-2xl: orange;
-} */
+@plugin "../config/heroUI-import.ts";
 
 @theme {
     --*: initial; 
-
-
+    /* tiny mobile */
+    /* 0 */
+    /* normal mobile */
+    --breakpoint-xs: calc(320rem/16); /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
     /* large mobile */
-    --breakpoint-sm: calc(360rem/16); /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
+    --breakpoint-sm: calc(560rem/16); /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
     /* tablet */
-    --breakpoint-md: calc(769rem/16); /* tw puvodne > md 48rem (768px)	@media (width >= 48rem) { ... } */
+    --breakpoint-md: calc(720rem/16); /* tw puvodne > md 48rem (768px)	@media (width >= 48rem) { ... } */
     /* desktop */
     --breakpoint-lg: calc(1040rem/16); /* tw puvodne > lg 64rem (1024px)	@media (width >= 64rem) { ... } */
     /* wide screen */
@@ -37,13 +28,14 @@
     --container-lg: 32rem;
     --container-4xl: 56rem;
 
-    
+    --mobile-page-margin: 1.6rem;
     --grid-cols-narrow-left: 2fr 3fr;
     --grid-cols-narrow-right: 3fr 2fr;
 
     --spacing: 0.25rem;
     --spacing-vertical-gap: 4rem; /* gap on touch screens*/
     --spacing-horizontal-gap: 4rem;
+    --spacing-horizontal-gap-double: 8rem;
 
     --section-padding-y: 4rem;
     --section-padding-y-md: 6rem;
@@ -153,9 +145,8 @@ body {
 html, body {
     scroll-behavior: smooth;
 }
-/*
- * grid system
- */
+
+@custom-variant breakpoint-xs {@media (min-width: theme(breakpoint-xs)) {@slot}} /* 320px - tiny mobile */
 @custom-variant breakpoint-sm {@media (min-width: theme(breakpoint-sm)) {@slot}} /* 360px - large mobile */
 @custom-variant breakpoint-md {@media (min-width: theme(breakpoint-md)) {@slot}} /* 769px - tablet */
 @custom-variant breakpoint-lg {@media (min-width: theme(breakpoint-lg)) {@slot}} /* 1040px - desktop */
@@ -166,11 +157,11 @@ html, body {
 
 
 :root {
-    --container-width: 92%;
+    --container-width-default: 92%;
     --container-max-width: 1600px;
 }
 .container {  
-    padding-inline: 1rem;
+    padding-inline: calc(var(--mobile-page-margin)/2);
     max-width: 98%;
 
     background: var(--container-debug-col);  
@@ -181,11 +172,19 @@ html, body {
 .text-big {
     font-size: var(--text-big);
 }
+@variant breakpoint-xs {
+    .container {
+        padding-inline: var(--mobile-page-margin);
+
+        background: var(--container-debug-col-xs);
+    }
+}
 
 @variant breakpoint-sm {
     .container {     
-        max-width: var(--container-max-width);
-        width: var(--container-width);
+        padding-inline: 0;
+        max-width: 100%;
+        width: var(--container-width-default);
         
         background: var(--container-debug-col-md);
     }
@@ -215,7 +214,7 @@ html, body {
 @variant breakpoint-2xl {
     .container {
         max-width: calc(1680rem/16);
-        width: var(--container-width);
+        width: var(--container-width-default);
 
         background: var(--container-debug-col-2xl);
     }
@@ -432,3 +431,16 @@ html, body {
         --heroui-box-shadow-large: 0px 0px 30px 0px #0000000a, 0px 30px 60px 0px #0000001f, 0px 0px 1px 0px #0000004d; */
         --heroui-hover-opacity: 1;
     }
+
+
+/* debug breakpoints */
+/*:root {
+
+    --container-debug-col: teal;
+    --container-debug-col-xs: purple;
+    --container-debug-col-sm: red;
+    --container-debug-col-md: green;
+    --container-debug-col-lg: blue;
+    --container-debug-col-xl: yellow;
+    --container-debug-col-2xl: orange;
+} */

@@ -36,18 +36,19 @@ export const ArrowIcon = (strokeWidth = 1, stroke = "#616161") => {
     </svg>
 	);
 }
-export const ArrowShortIcon = ({direction = "left", strokeWidth = 1, stroke = "#616161"}) => {
-	let className = "";
+export const ArrowShortIcon = ({direction = "left", strokeWidth = 1, stroke = "#616161", extraClassName = ""}) => {
+	let className = "max-w-[100%] ";
 	switch (direction) {
 		case "right":
-			className = "rotate-180";
+			className += "rotate-180";
 			break;
 		case "left":
-			className = "";
+			className += "";
 			break;
 		default:
-			className = "";
+			className += "";
 	}
+  className += " " + extraClassName;
 	return (
     <span className={className}>
       <svg width="82" height="27" className={className} viewBox="0 0 82 27" fill="none" xmlns="http://www.w3.org/2000/svg">

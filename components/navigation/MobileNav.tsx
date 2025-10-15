@@ -13,14 +13,18 @@ import { NavbarCTA } from "./NavbarCTA";
 export const MobileNav = () => {
 
     return (
-        <nav id="mainmenu_mobile" className={`flex lg:hidden items-center justify-between h-24`}
+        <nav id="mainmenu_mobile" className={`flex items-center justify-end 
+            md:justify-between min-h-28 md:min-h-24  
+            lg:hidden `}
          role="navigation" aria-label="main navigation">
-            <NavbarLogo />
+            <span className="hidden md:block"><NavbarLogo /></span>
             {/* hamburger */}
-            <button className="flex flex-col justify-between h-6 w-6">
-                <span className="sr-only">Menu</span>
-                <span className="block w-6 h-px bg-black"></span>
-                <span className="block w-6 h-px bg-black"></span>
+            <button className="px-4 py-4">
+                <span className="flex flex-col justify-between items-end h-6 w-8">
+                    <span className="sr-only">Menu</span>
+                    <span className="block w-6 h-px bg-black"></span>
+                    <span className="block w-9 h-px bg-black"></span>
+                </span>
             </button>
         </nav>
     );

@@ -31,12 +31,6 @@ export const Portfolio = () => {
         <section className="section py-section border-default-b">
 		<div className="container">
 			<h2 className="mb-16">Portfolio</h2>
-            
-            {/* <Tabs variant="underlined" aria-label="Options" className="mb-16 max-w-40">
-                {categories.map((category) => (
-                    <Tab key={category.key} value={category.key}>{category.title}</Tab>
-                ))}
-            </Tabs> */}
 
             {/* categories */}
             <div className="flex flex-row gap-4 mb-8">
