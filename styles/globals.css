@@ -33,9 +33,12 @@
     --grid-cols-narrow-right: 3fr 2fr;
 
     --spacing: 0.25rem;
+    --spacing-vertical-gap-small: 3rem;
     --spacing-vertical-gap: 4rem; /* gap on touch screens*/
     --spacing-horizontal-gap: 4rem;
     --spacing-horizontal-gap-double: 8rem;
+
+    --spacing-tablet-text-max-w: calc(600rem/16);
 
     --section-padding-y: 4rem;
     --section-padding-y-md: 6rem;
@@ -55,6 +58,7 @@
     --color-grey-dark: #606060;
     --color-gray: #606060;
     --color-link: var(--color-grey-dark);
+    --color-link-light: #B1B1B1;
 
     --color-bg: #F9F9F9;
 
@@ -84,8 +88,25 @@
 
     --text-xs: calc(12rem/16); /* old 12px */
     --text-xs--line-height: calc(1 / 0.75);
-    --text-lg: calc(18rem/16); /* old 18px */
-    --text-lg--line-height: calc(1.75 / 1.125);
+
+    --text-form-label: calc(14rem/16); /* old 16px */
+    --text-form-label--line-height: 1.62em;
+    --text-form-label--font-weight: 300;
+
+    --text-small: calc(12rem/16);
+    --text-small--line-height: 1.62em;
+    --text-small--font-weight: 300;
+
+    --text-base: calc(18rem/16); /* old 16px */
+    --text-base-lg: calc(19rem/16); /* old 16px */
+    --text-base--line-height: 1.62em;
+    --text-base--font-weight: 300;
+
+    --text-big: calc(20rem/16); /* text-2xl */
+    --text-big-lg: calc(23rem/16); /* old 60px */
+    --text-big--line-height: 1.62em;
+    --text-big--font-weight: 300;
+    
     --text-xl: calc(20rem/16); /* old 20px */
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-3xl: calc(30rem/16); /* old 30px */
@@ -96,20 +117,6 @@
     --text-5xl--line-height: 1;
     --text-6xl: calc(60rem/16); /* old 60px */
     --text-6xl--line-height: 1;
-
-    --text-form-label: calc(14rem/16); /* old 16px */
-    --text-form-label--line-height: 1.62em;
-    --text-form-label--font-weight: 300;
-
-    --text-base: calc(16rem/16); /* old 16px */
-    --text-base-lg: calc(19rem/16); /* old 16px */
-    --text-base--line-height: 1.62em;
-    --text-base--font-weight: 300;
-
-    --text-big: calc(20rem/16);
-    --text-big-lg: calc(23rem/16); /* old 60px */
-    --text-big--line-height: 1.62em;
-    --text-big--font-weight: 200;
 
     --font-weight-extralight: 200;
     --font-weight-light: 300;
@@ -132,6 +139,7 @@
   
 
     --tracking-normal: 0.05em;
+    --tracking-almost-normal: 0.08em;
     --tracking-wide: 0.12em;
     --tracking-wider: 0.2em;
 
@@ -250,6 +258,7 @@ html, body {
     .h2 {
         font-size: calc(30rem/16);
         text-align: center;
+        @apply tracking-almost-normal;
     }
     @variant breakpoint-md {
         .h2 {
@@ -262,15 +271,31 @@ html, body {
             text-align: left;
         }
     }
+    
+    .h3 {
+        font-size: calc(20rem/16);
+        @apply tracking-almost-normal;
+    }
 
     p {
         @apply text-base;
+        margin-bottom: 1em;
     }
     a {
         @apply text-link;
         @apply underline;
+/*         
+        &:hover {
+            color: var(--color-black);
+        } */
     }
+    .link-light {
+        color: var(--color-link-light);
 
+        &:hover {
+            color: var(--color-white);
+        }
+    }
 }
 /* body {
     background: var(--color-bg);
@@ -291,6 +316,27 @@ html, body {
     @variant breakpoint-lg {
         .py-section {
             padding-block: var(--section-padding-y-lg);
+        }
+    }
+    .mb-h2 {
+        @apply mb-5;
+    }
+}
+
+@layer utilities {
+    .py-section-half {
+        padding-block: calc(var(--section-padding-y));
+    }
+    
+    @variant breakpoint-md {
+        .py-section-half {
+            padding-block: calc(var(--section-padding-y));
+        }
+    }
+    
+    @variant breakpoint-lg {
+        .py-section-half {
+            padding-block: calc(var(--section-padding-y-lg) / 2 );
         }
     }
     .mb-h2 {

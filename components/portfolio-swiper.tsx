@@ -115,6 +115,7 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
     <AnimatePresence>
         <Swiper 
             id={props.galleryID}
+
             modules={[Pagination, Navigation]}
             spaceBetween={25}
             slidesPerView={1}
@@ -147,55 +148,85 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                 },
             }}
             className="my-swiper pswp-gallery">
-                
-            {PortfolioData
-                .filter(item => item.category === props.category || props.category === "all")
-                .map((item, index) => (
-                    <motion.div key={item.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        <SwiperSlide 
-                            key={item.id}
-                            className="!flex flex-col gap-5 
-                                min-h-[34rem]
-                                my-8
-                                p-8 px-8 border-1 border-stroke-light bg-white max-w-[32rem]
-                                sm _hover:bg-beige-light hover:scale-102 !transition-all hover:shadow-[0px_4px_16px_rgba(0,0,0,0.1)]">
+            <div className="swiper-wrapper">
+                {PortfolioData
+                    .filter(item => item.category === props.category || props.category === "all")
+                    .map((item, index) => (
+                        <motion.div key={item.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                            <SwiperSlide 
+                                key={item.id}
+                                className="!flex flex-col gap-5 
+                                    min-h-[34rem]
+                                    my-8
+                                    p-8 px-8 border-1 border-stroke-light bg-white max-w-[32rem]
+                                    sm _hover:bg-beige-light hover:scale-102 !transition-all hover:shadow-[0px_4px_16px_rgba(0,0,0,0.1)]">
 
-                                <a 
-                                // href={item.image_lightbox}
-                                data-pswp-width={item.image_width}
-                                data-pswp-height={item.image_height}
-                                key={props.galleryID + '-' + item.id}
-                                target="_blank"
-                                rel="noreferrer"
-                                >
-                                    <Image src={item.image} alt={item.title} width={item.image_width} height={item.image_height} />
-                                </a>
-                                <div className="flex flex-col gap-2">
-                                    <h4 className="text-lg normal-case tracking-[0.05em] font-normal">{item.title}</h4>
-                                    <div className="text-[1.1rem] font-[300] normal-case">{item.description}</div>
-                                </div>
-                        </SwiperSlide>
-                    </motion.div>
+                                    <a 
+                                    // href={item.image_lightbox}
+                                    data-pswp-width={item.image_width}
+                                    data-pswp-height={item.image_height}
+                                    key={props.galleryID + '-' + item.id}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    >
+                                        <Image src={item.image} alt={item.title} width={item.image_width} height={item.image_height} />
+                                    </a>
+                                    <div className="flex flex-col gap-2">
+                                        <h4 className="text-lg normal-case tracking-[0.05em] font-normal">{item.title}</h4>
+                                        <div className="text-[1.1rem] font-[300] normal-case">{item.description}</div>
+                                    </div>
+                            </SwiperSlide>
+                        </motion.div>
                 ))}
+            
+                
+            </div>
 
-            <div className="navigation flex flex-row-reverse justify-between">
-                <a className="my-button-next rotate-180 py-6 pt-8 hover:-translate-x-2 transition-all hover:cursor-pointer"><ArrowShortIcon /></a>
-                <a className="my-button-prev  py-6 pt-8 hover:translate-x-2 transition-all hover:cursor-pointer"><ArrowShortIcon /></a>
+            <div className="_arrow-navigation
+                flex flex-row-reverse justify-between items-center
+                h-[3rem] mt-[2rem]
+
+            ">
+                <a className="my-button-next
+                    rotate-180 8 hover:-translate-x-2 transition-all 
+                    hover:cursor-pointer
+                "><ArrowShortIcon /></a>
+                <a className="my-button-prev
+                     hover:translate-x-2 transition-all 
+                    hover:cursor-pointer
+                "><ArrowShortIcon /></a>
             </div>
             <style>
                 {`
                     .swiper-pagination {
-                        top: 0;
+                        margin-bottom: 3rem;
+                        height: 3rem;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
                     }
                     .swiper-pagination-bullet {
-                        width: 10px;
-                        height: 10px;
-                        background-color: #000;
+                        width: 0.9rem;
+                        height: 0.9rem;
+                        background-color: white;
+                        border: 1px solid var(--color-stroke);
                         border-radius: 50%;
+                    }
+                    .swiper-pagination-bullet:hover {
+                        background-color: var(--color-beige);
+                        border: none;
+                    }
+                    .swiper-pagination-bullet-active {
+                        background-color: var(--color-black);
+                        border: 1px solid var(--color-black);
+                    }
+                    @media (min-width: 768px) {
+                        .swiper-pagination {
+                            margin-bottom: -0.4rem;
+                        }
                     }
                 `}
             </style>
-     
         </Swiper>
         
         </AnimatePresence>

@@ -63,7 +63,7 @@ export const OurServicesSection = () => {
 			">
 				<div className="_left-column _headline-and-text-column
 					flex flex-col justify-start gap-4
-					max-w-[calc(600rem/16)]
+					max-w-tablet-text-max-w
 					lg:max-w-[200rem/16] 
 				">
 					<h2 className="h2 mb-h2">Naše služby</h2>					
@@ -79,7 +79,8 @@ export const OurServicesSection = () => {
 					flex flex-col justify-between items-center gap-y-20 
 					lg:min-h-[30rem]">								
 						<Accordion className="_services-accordion 
-							w-[calc(100%+2*var(--mobile-page-margin))] max-w-[calc(600rem/16)] 
+							w-[calc(100%+2*var(--mobile-page-margin))] 
+							max-w-tablet-text-max-w
 							border-y-1 px-0 mx-[calc(-1*var(--mobile-page-margin))]  border-stroke-light
 							lg:max-w-[100%]" 
 

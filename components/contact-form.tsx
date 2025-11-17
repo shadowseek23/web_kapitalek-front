@@ -124,8 +124,17 @@ export default function ContactForm() {
 			onReset={() => setSubmitted(null)}
 			onSubmit={onSubmit}
 		>
-			<div className="w-full max-w-[50rem] flex flex-col gap-6 max-w-md">
-				<div className="flex gap-8">						
+			<div className="_form-wrapper
+				w-full max-w-[50rem] flex flex-col gap-6 max-w-md
+			">
+				<div className="_input-flex-row
+					flex gap-6 flex-wrap
+					lg:gap-8
+				">		
+					<div className="_input-column
+						basis-[calc(200rem/16)]
+						grow-1
+					">
 						<Input
 							{...defaultInputProps}
 							isRequired
@@ -142,6 +151,11 @@ export default function ContactForm() {
 							placeholder="Vaše jméno"
 							classNames={defaultInputClassNames}
 						/>
+					</div>
+					<div className="_input-column
+						basis-[calc(200rem/16)]
+						grow-1
+					">
 						<Input
 							{...defaultInputProps}
 							isRequired
@@ -156,6 +170,7 @@ export default function ContactForm() {
 							placeholder="Vaše příjmení"
 							classNames={defaultInputClassNames}
 						/>
+					</div>
 				</div>
 
 				<Input		

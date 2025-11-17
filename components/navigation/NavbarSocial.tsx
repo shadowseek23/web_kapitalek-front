@@ -1,12 +1,13 @@
+"use client";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 import { siteConfig } from "@/config/site";
 import { SocialIcon } from "@/components/social-icon";
 
-export const NavbarSocial = () => {
+export const NavbarSocial = ({ gap = "3" }: { gap?: string }) => {
   const size = "sm";
   return (
-    <div className="hidden lg:flex items-center flex-row gap-3">
+    <div className={`flex items-center flex-row gap-4`}>
       <SocialIcon
         href={siteConfig.socialLinks.instagram}
         icon={<FaInstagram />}

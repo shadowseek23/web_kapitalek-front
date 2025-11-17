@@ -11,6 +11,9 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { NavbarDesktopCentered } from "@/components/navigation/NavbarDesktopCentered";
 import { MobileNav } from "@/components/navigation/MobileNav";
+import { NavbarSocial } from "@/components/navigation/NavbarSocial";
+import NextLink from "next/link";
+import {Footer} from "@/components/Footer"
 
 export const metadata: Metadata = {
   title: {
@@ -36,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">1
+    <html suppressHydrationWarning lang="en">
       <head />
       <body
         className={clsx(
@@ -55,19 +58,8 @@ export default function RootLayout({
             <main className="">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <div className="container">
-                <Link
-                  isExternal
-                  className="flex items-center gap-1 text-current"
-                  href="https://heroui.com?utm_source=next-app-template"
-                  title="heroui.com homepage"
-                >
-                  <span className="text-default-600">Powered by</span>
-                  <p className="text-primary">HeroUI</p>
-                </Link>
-              </div>
-            </footer>
+            <Footer />
+
         </Providers>
       </body>
     </html>
