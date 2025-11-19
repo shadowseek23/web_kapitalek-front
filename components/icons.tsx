@@ -236,3 +236,22 @@ export const SearchIcon = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+export const CloseIcon = ({
+  size,
+  width = 27,
+  height = 26,
+  ...props
+}: IconSvgProps) => (
+  <svg 
+    width={size || width} 
+    height={size || height} 
+    viewBox="0 0 27 26" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    {...props}
+  >
+    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(0.707105 -0.707109 0.707105 0.707109 0.707031 25.7061)" stroke="#616161"/>
+    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(-0.707105 -0.707109 -0.707105 0.707109 25.707 25.7061)" stroke="#616161"/>
+  </svg>
+);

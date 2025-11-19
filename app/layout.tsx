@@ -1,18 +1,15 @@
+// "use server";
 import "@/styles/globals.css";
 import "@/styles/components/navbar.css";
 import "@/styles/components/navbar-mobile.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
-
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { NavbarDesktopCentered } from "@/components/navigation/NavbarDesktopCentered";
-import { MobileNav } from "@/components/navigation/MobileNav";
-import { NavbarSocial } from "@/components/navigation/NavbarSocial";
-import NextLink from "next/link";
+import { MobileNav } from "@/components/navigation/mobile/MobileNav";
 import {Footer} from "@/components/Footer"
 
 export const metadata: Metadata = {
@@ -59,7 +56,6 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
-
         </Providers>
       </body>
     </html>

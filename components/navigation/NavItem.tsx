@@ -1,3 +1,5 @@
+"use client";
+
 import NextLink from "next/link";
 
 // Simple Navbar Item (Link)

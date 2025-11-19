@@ -1,4 +1,3 @@
-"use client";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 import { siteConfig } from "@/config/site";

@@ -23,28 +23,6 @@ export const siteConfig = {
       href: "/#kontakt",
     },
   ],
-  navItems: [
-    {
-      label: "Domů",
-      href: "/#top",
-    },
-    {
-      label: "Naše služby",
-      href: "/#sluzby",
-    },
-    {
-      label: "Portfolio",
-      href: "/#portfolio",
-    },
-    {
-      label: "O nás",
-      href: "/#o-nas",
-    },
-    {
-      label: "Kontakt",
-      href: "/#kontakt",
-    }
-  ],
   socialLinks: {
     instagram: "https://instagram.com/kapitalek",
     facebook: "https://facebook.com/kapitalek",
