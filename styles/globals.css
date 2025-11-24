@@ -1,36 +1,51 @@
 
-
 @import "tailwindcss";
 @config "../tailwind.config.js";
 @plugin "../config/heroUI-import.ts";
 
+
+
 @theme {
-    --*: initial; 
-    /* tiny mobile */
-    /* 0 */
-    /* normal mobile */
-    --breakpoint-xs: calc(320rem/16); /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
-    /* large mobile */
-    --breakpoint-sm: calc(560rem/16); /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
-    /* tablet */
-    --breakpoint-md: calc(720rem/16); /* tw puvodne > md 48rem (768px)	@media (width >= 48rem) { ... } */
-    /* desktop */
-    --breakpoint-lg: calc(1040rem/16); /* tw puvodne > lg 64rem (1024px)	@media (width >= 64rem) { ... } */
-    /* wide screen */
-    --breakpoint-xl: calc(1216rem/16); /* tw puvodne > xl 80rem (1280px)	@media (width >= 80rem) { ... } */
-    /* full hd */
-    --breakpoint-2xl: calc(1408rem/16); /* tw puvodne > 2xl	96rem (1536px)	@media (width >= 96rem) { ... } */
+    --*: initial; /* dont use tw default values */
 
+
+    /* 
+     * breakpoints: 
+     */
+
+    /* tiny mobile <320px */
+        /* 0 */
+    /* normal mobile - 320px */
+        --breakpoint-xs: calc(320rem/16);       /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
+    /* large mobile - 560px */
+        --breakpoint-sm: calc(560rem/16);       /* tw puvodne > sm 40rem (640px)	@media (width >= 40rem) { ... } */
+    /* tablet - 720px */
+        --breakpoint-md: calc(720rem/16);       /* tw puvodne > md 48rem (768px)	@media (width >= 48rem) { ... } */
+    /* desktop - 1040px */
+        --breakpoint-lg: calc(1040rem/16);      /* tw puvodne > lg 64rem (1024px)	@media (width >= 64rem) { ... } */
+    /* wide screen - 1216px */
+        --breakpoint-xl: calc(1216rem/16);      /* tw puvodne > xl 80rem (1280px)	@media (width >= 80rem) { ... } */
+    /* full hd - 1408px */
+        --breakpoint-2xl: calc(1408rem/16);     /* tw puvodne > 2xl	96rem (1536px)	@media (width >= 96rem) { ... } */
+
+
+
+
+    /* container responsivity */
     /* -container-tablet-max-w: calc(640rem/16); */
-
     --container-3xs: 16rem;
     --container-sm: 24rem;
     --container-lg: 32rem;
     --container-4xl: 56rem;
 
+
+
+    
     --mobile-page-margin: 1.6rem;
     --grid-cols-narrow-left: 2fr 3fr;
     --grid-cols-narrow-right: 3fr 2fr;
+
+
 
     --spacing: 0.25rem;
     --spacing-vertical-gap-small: 3rem;
@@ -40,6 +55,9 @@
 
     --spacing-tablet-text-max-w: calc(600rem/16);
 
+
+
+    /* section padding - not an tw override */
     --section-padding-y: 4rem;
     --section-padding-y-md: 6rem;
     --section-padding-y-lg: 8rem;

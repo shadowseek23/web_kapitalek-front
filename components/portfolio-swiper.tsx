@@ -190,11 +190,11 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                 <a className="my-button-next
                     rotate-180 8 hover:-translate-x-2 transition-all 
                     hover:cursor-pointer
-                "><ArrowShortIcon /></a>
+                "><ArrowShortIcon height="24" /></a>
                 <a className="my-button-prev
                      hover:translate-x-2 transition-all 
                     hover:cursor-pointer
-                "><ArrowShortIcon /></a>
+                "><ArrowShortIcon height="24" /></a>
             </div>
             <style>
                 {`
@@ -209,16 +209,19 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                         width: 0.9rem;
                         height: 0.9rem;
                         background-color: white;
-                        border: 1px solid var(--color-stroke);
+                        border: 1px solid rgba(0,0,0,0.8);
                         border-radius: 50%;
+                        opacity: 0.3;
                     }
                     .swiper-pagination-bullet:hover {
                         background-color: var(--color-beige);
-                        border: none;
+                        border: 1px solid rgba(0,0,0,1);
+                        opacity: 0.6;
                     }
                     .swiper-pagination-bullet-active {
                         background-color: var(--color-black);
                         border: 1px solid var(--color-black);
+                        opacity: 0.8;
                     }
                     @media (min-width: 768px) {
                         .swiper-pagination {

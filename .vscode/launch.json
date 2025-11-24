@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Next.js: Full Stack Debug",
+      "configurations": ["Next.js: Server (Node.js)", "Next.js: Client (Chrome)"]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Next.js: Server (Node.js)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 9229,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "restart": true
+    },
+    {
+      "name": "Next.js: Client (Chrome)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "breakOnLoad": true
+    },
+    {
+      "name": "Next.js: Attach to Server",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

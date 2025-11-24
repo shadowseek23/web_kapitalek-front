@@ -24,9 +24,12 @@ export const MobileFullscreenMenu = ({ isOpen, setIsOpen }: { isOpen: boolean, s
                 transition-[opacity,transform] duration-[600ms]
                 flex items-center pb-[10vh] w-full h-full z-100
                 bg-[#E6DECD]
+                
                 ${isOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-1 pointer-events-none"}
             `}
-            aria-hidden={!isOpen}>
+            aria-hidden={!isOpen}
+            onClick={(e) => { e.preventDefault(); setIsOpen(false); }}
+        >
             <a className="__close-icon
                     absolute top-0 right-0 pt-8 pr-8 pb-2 pl-2
                     group
@@ -36,7 +39,7 @@ export const MobileFullscreenMenu = ({ isOpen, setIsOpen }: { isOpen: boolean, s
                 >
                     <div className="__rounder-wrapper
                          rounded-full p-3 
-                         bg-[rgba(0,0,0,0.1)]
+                         bg-[rgba(0,0,0,0.04)]
                         flex items-center justify-center
                         group-hover:bg-white
                         transition-[background-color] duration-[120ms]

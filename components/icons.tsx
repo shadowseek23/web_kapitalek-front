@@ -36,7 +36,7 @@ export const ArrowIcon = (strokeWidth = 1, stroke = "#616161") => {
     </svg>
 	);
 }
-export const ArrowShortIcon = ({direction = "left", strokeWidth = 1, stroke = "#616161", extraClassName = ""}) => {
+export const ArrowShortIcon = ({height = "27", width = "", direction = "left", strokeWidth = 1, stroke = "#616161", extraClassName = ""}) => {
 	let className = "max-w-[100%] ";
 	switch (direction) {
 		case "right":
@@ -49,9 +49,12 @@ export const ArrowShortIcon = ({direction = "left", strokeWidth = 1, stroke = "#
 			className += "";
 	}
   className += " " + extraClassName;
+
+  width = width || height * (82 / 27);    
+
 	return (
     <span className={className}>
-      <svg width="82" height="27" className={className} viewBox="0 0 82 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={width} height={height} className={className} viewBox="0 0 82 27" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M81.1914 13.4316H1.09595" stroke={stroke} strokeWidth={strokeWidth}/>
         <line y1="-0.5" x2="18.4414" y2="-0.5" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 13.0391 26.4766)" stroke={stroke} strokeWidth={strokeWidth}/>
         <line x1="13.2142" y1="0.830766" x2="0.761101" y2="13.3759" stroke={stroke} strokeWidth={strokeWidth}/>

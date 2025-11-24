@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NavbarSocial } from "./navigation/NavbarSocial";
+import { siteConfig } from "@/config/site";
 
 export const Footer = () => {        
     return (
@@ -24,7 +25,9 @@ export const Footer = () => {
                 md:flex-row
             ">
                 <div className="_left-column 
-                    flex flex-col items-center gap-y-2">
+                    flex flex-col items-center gap-y-2
+                    md:grow-1"
+                >
                     <h4 className="h3 text-white tracking-wide text-center mb-[1em] ">
                         Kapitálek s.r.o.
                     </h4>
@@ -35,10 +38,23 @@ export const Footer = () => {
                         Podmínky používání cookies
                     </Link>
                 </div>
+                <div className="_middle-column"
+                >
+                    {siteConfig.navItemsLeft.concat(siteConfig.navItemsRight).map((item) => (
+                        <li>
+                            <a href="{item.href}">{item.label}</a>
+                        </li>
+                    ))}
+                </div>
                 <div className="_right-column
                     flex flex-col items-center gap-y-1
-                    text-center">
-                Tento web má pod křídly <Link href="#"  className="link-light" target="_blank">Studio Libertis</Link>
+                    text-center
+                    md:grow-1"
+                >
+                    Tento web má pod křídly
+                    <Link href="#"  className="link-light" target="_blank">
+                        Studio Libertis
+                    </Link>
                 </div>
             </div>
             </section>

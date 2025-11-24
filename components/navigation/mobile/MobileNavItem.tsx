@@ -15,7 +15,7 @@ export const MobileNavItem = ({  label, href, isActive = false, isMobileNavOpen,
             last:border-b-1 border-b-[rgba(0,0,0,0.15)]
         ">
             <a href={href} 
-                onClick={() => setIsMobileNavOpen(false)}
+                onClick={(e) => {setIsMobileNavOpen(false); e.stopPropagation();}}
                 className="navbar__item-inner-link
                     block
                     

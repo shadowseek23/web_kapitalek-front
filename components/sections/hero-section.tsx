@@ -18,7 +18,7 @@ export const HeroSection = () => {
 			">
 
 				<div className="_left-column _top-column 
-					pt-[5rem]
+					pt-[4rem]
 					flex items-center justify-center 
 					lg:p-0
 					lg:border-r-1 lg:border-stroke
