@@ -14,45 +14,66 @@ export const Footer = () => {
                         Najděte nás na sociálních sítích
                     </h2>                    
                     <div className="inline-block">
-                        <NavbarSocial gap="[4rem]" />
+                        <NavbarSocial gap="[4rem]" sizeResponsive={true} />
                     </div>
                 </div>
             </section>
-            <section className="_links-etc bg-black text-white py-12">
+            <section className="_links-etc bg-black text-white py-12
+            flex justify-center">
             <div className="container 
                 flex flex-col justify-between 
-                gap-x-4 gap-y-12
-                md:flex-row
+                gap-x-6 gap-y-12
+                !max-w-[50rem] 
+                md:flex-row md:flex-wrap
+                lg:grid lg:grid-cols-3 lg:gap-x-12
+                lg:!max-w-[80rem]               
             ">
                 <div className="_left-column 
                     flex flex-col items-center gap-y-2
-                    md:grow-1"
+                    md:grow-1 md:text-left md:items-start
+                    lg:min-w-0"
                 >
-                    <h4 className="h3 text-white tracking-wide text-center mb-[1em] ">
+                    <h4 className=" h3 text-white tracking-wide text-center mb-[1em] 
+                        md:text-left
+                        lg:h-[2rem] lg:flex lg:flex-col lg:justify-end lg:items-start lg:mb-4">
                         Kapitálek s.r.o.
                     </h4>
-                    <Link className="link-light" href="/podminky-zpracovani-osobnich-udaju">
+                    <Link className="link-light md:text-left" href="/podminky-zpracovani-osobnich-udaju">
                         Podmínky zpracování osobních údajů
                     </Link>
-                    <Link className="link-light" href="/podminky-cookies">
+                    <Link className="link-light md:text-left" href="/podminky-cookies">
                         Podmínky používání cookies
                     </Link>
                 </div>
-                <div className="_middle-column"
+                <div className="_middle-column text-center
+                     md:basis-1/2 md:text-left
+                     md:relative md:left-20
+                     lg:relative lg:min-w-0 lg:!left-28"
                 >
-                    {siteConfig.navItemsLeft.concat(siteConfig.navItemsRight).map((item) => (
-                        <li>
-                            <a href="{item.href}">{item.label}</a>
-                        </li>
-                    ))}
+                    <h4 className="text-white mb-4
+                        lg:h-[2rem] lg:flex lg:flex-col lg:justify-end lg:items-start lg:mb-4">Rychlé odkazy</h4>
+                    <ul>
+                        {siteConfig.navItemsLeft.concat(siteConfig.navItemsRight).map((item) => (
+                            <li className="mb-2" key={item.href}>
+                                <a href="{item.href}" className="link-light">
+                                    {item.label}</a>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <div className="_right-column
                     flex flex-col items-center gap-y-1
                     text-center
-                    md:grow-1"
+                    md:grow-1 
+                    lg:min-w-0
+                    lg:items-start
+                    lg:relative lg:left-22
+                    " 
                 >
-                    Tento web má pod křídly
-                    <Link href="#"  className="link-light" target="_blank">
+                    <span className="lg:h-[2rem] lg:flex lg:flex-col lg:justify-end lg:items-start lg:mb-2 ">
+                        Tento web má pod křídly
+                    </span>
+                    <Link href="https://libertis.studio/"  className="link-light" target="_blank">
                         Studio Libertis
                     </Link>
                 </div>

@@ -117,7 +117,7 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
             id={props.galleryID}
 
             modules={[Pagination, Navigation]}
-            spaceBetween={25}
+            spaceBetween={22}
             slidesPerView={1}
             slidesPerGroup={1}
             speed={1000}
@@ -143,8 +143,8 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                     slidesPerGroup: 4,
                 },
                 [breakpoints["2xl_px"]]: {
-                    slidesPerView: 5,
-                    slidesPerGroup: 5,
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
                 },
             }}
             className="my-swiper pswp-gallery">
@@ -155,12 +155,13 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                         <motion.div key={item.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                             <SwiperSlide 
                                 key={item.id}
-                                className="!flex flex-col gap-5 
+                                className="p-4 md:p-2 lg:p-0">
+                                <div className="__slide-wrapper 
+                                    !flex flex-col gap-5 
                                     min-h-[34rem]
                                     my-8
                                     p-8 px-8 border-1 border-stroke-light bg-white max-w-[32rem]
                                     sm _hover:bg-beige-light hover:scale-102 !transition-all hover:shadow-[0px_4px_16px_rgba(0,0,0,0.1)]">
-
                                     <a 
                                     // href={item.image_lightbox}
                                     data-pswp-width={item.image_width}
@@ -175,6 +176,8 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                                         <h4 className="text-lg normal-case tracking-[0.05em] font-normal">{item.title}</h4>
                                         <div className="text-[1.1rem] font-[300] normal-case">{item.description}</div>
                                     </div>
+
+                                </div>
                             </SwiperSlide>
                         </motion.div>
                 ))}
@@ -185,14 +188,14 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
             <div className="_arrow-navigation
                 flex flex-row-reverse justify-between items-center
                 h-[3rem] mt-[2rem]
-
+                
             ">
                 <a className="my-button-next
-                    rotate-180 8 hover:-translate-x-2 transition-all 
+                    z-10 rotate-180 8 hover:-translate-x-2 transition-all 
                     hover:cursor-pointer
                 "><ArrowShortIcon height="24" /></a>
                 <a className="my-button-prev
-                     hover:translate-x-2 transition-all 
+                     z-100 hover:translate-x-2 transition-all 
                     hover:cursor-pointer
                 "><ArrowShortIcon height="24" /></a>
             </div>
@@ -227,6 +230,16 @@ export const PortfolioSwiper = (props: { galleryID: string, category: string }) 
                         .swiper-pagination {
                             margin-bottom: -0.4rem;
                         }
+                    }
+                    .swiper-button-disabled {
+                        opacity: 0.2;
+                        cursor: default;
+                        
+                    }
+                    .swiper-button-disabled:hover > *, 
+                    .swiper-button-disabled:hover {
+                        transform: none !important;
+                        translate: none !important;
                     }
                 `}
             </style>
