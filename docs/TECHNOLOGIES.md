@@ -1,4 +1,7 @@
+
 # Technologie a knihovny
+
+Tato aplikace používá TypeScript jako hlavní programovací jazyk pro typovanou a bezpečnější práci s kódem.
 
 Tento dokument shrnuje hlavní technologie a externí knihovny použité v aplikaci.
 
@@ -7,7 +10,7 @@ Tento dokument shrnuje hlavní technologie a externí knihovny použité v aplik
 - Jazyk: TypeScript — typování pro bezpečnější vývoj.
 - Styling: Tailwind CSS (v4.x) + `postcss` (pluginy: `postcss-import`, `postcss-nested`, `postcss-mixins`, `postcss-simple-vars`, `postcss-utilities`) — utility-first CSS a PostCSS pipeline.
 - Design / komponenty: `@heroui/*` — sada hotových komponent (accordion, button, navbar, modal, atd.).
-- Témata: `next-themes` — správa světlého/tmavého režimu.
+- Témata: `next-themes` —  řeší přepínání světlého/tmavého režimu.
 - Animace: `framer-motion` — animace a přechody.
 - Carousel / slider: `swiper` — portfolio slider.
 - Lightbox / galerie: `photoswipe` — zobrazení obrázků v lightboxu.
