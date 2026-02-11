@@ -70,7 +70,7 @@
         "Courier New", monospace; */
     --color-black: #000000;
     --color-white: #FFFFFF;
-    --color-beige: #C1B49A;
+    --color-beige: #CDBEA3;
     --color-beige-light: color-mix(in srgb, var(--color-beige) 30%, transparent);
 
     --color-grey-dark: #606060;

@@ -1,7 +1,7 @@
 "use client";
 import breakpoints from "@/config/breakpoints.json";
 
-import { Tabs, Tab } from "@heroui/tabs";
+import { Tabs, Tab } from "@heroui/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

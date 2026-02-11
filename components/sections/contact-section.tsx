@@ -1,7 +1,15 @@
+"use client";
+
 import ContactForm from "../contact-form"
 import Image from "next/image"
+import { motion } from "framer-motion";
 
 export const ContactSection = () => {
+    const isMobile = typeof window !== "undefined" &&
+        window.matchMedia("(max-width: 768px)").matches;
+    const leftInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: -32 };
+    const rightInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: 32 };
+
     return (
         <section id="kontakt" className="section
             py-section border-default-b relative overflow-hidden
@@ -10,9 +18,15 @@ export const ContactSection = () => {
                 lg:grid lg:grid-cols-[var(--grid-cols-narrow-left)]
                 lg:gap-x-horizontal-gap-double
             ">
-                <div className="_positioning-div
+                <motion.div
+                    className="_positioning-div
                     relative w-full text-center
-                ">                                    
+                "
+                    initial={rightInitial}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >                                    
                     <svg 
                         className="_background-ilustration
                             
@@ -33,7 +47,7 @@ export const ContactSection = () => {
                         width={380} height={285} 
                         alt="Šicí jehla" 
                     />
-                </div>
+                </motion.div>
             </div>
             <div className="container _formularatext
             
@@ -42,11 +56,17 @@ export const ContactSection = () => {
                 lg:gap-x-horizontal-gap
                 xl:gap-x-horizontal-gap-double
             ">
-                <div className="_left-column
+                <motion.div
+                    className="_left-column
                     flex flex-col items-center justify-start
                     text-center
                     lg:items-start
-                ">                 
+                "
+                    initial={leftInitial}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >                 
                     <h2 className="_headline
                         h2 mb-h2 z-10 max-w-[20rem] text--line-height-[2em]
                         lg:max-w-[100%]
@@ -61,12 +81,18 @@ export const ContactSection = () => {
                         Pošlete nám objednávku a my se Vám ozveme ohledně realizace.
                         Nebojte se v komentáři uvést Vaše speciální požadavky. Speciality nás baví!
                     </p>
-                </div>
-                <div className="_right-column
+                </motion.div>
+                <motion.div
+                    className="_right-column
                     flex flex-col items-center justify-center
-                ">
+                "
+                    initial={rightInitial}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
                     <ContactForm />
-                </div>
+                </motion.div>
             </div>
         </section>
     )

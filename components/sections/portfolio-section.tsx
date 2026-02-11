@@ -6,6 +6,11 @@ import { useState } from "react";
 
 
 export const PortfolioSection = () => {
+    const isMobile = typeof window !== "undefined" &&
+        window.matchMedia("(max-width: 768px)").matches;
+    const leftInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: -32 };
+    const rightInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: 32 };
+
     const categories = [
         {
             key: "all",
@@ -29,11 +34,25 @@ export const PortfolioSection = () => {
 
 	return (
         <section id="portfolio" className="section py-section border-default-b">
-		<div className="container">
-			<h2 className="h2 mb-16">Portfolio</h2>
+        <div className="container">
+            <motion.h2
+                className="h2 mb-16"
+                initial={leftInitial}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+                Portfolio
+            </motion.h2>
 
             {/* categories */}
-            <div className="flex flex-row  gap-4 mb-8 flex-wrap">
+            <motion.div
+                className="flex flex-row  gap-4 mb-8 flex-wrap"
+                initial={leftInitial}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+            >
                 {categories.map((category) => {
                     const active = category.key === currentCategory;
                     return (
@@ -56,9 +75,16 @@ export const PortfolioSection = () => {
                         </motion.div>
                     );
                 })}
-            </div>
+            </motion.div>
             {/* swiper */}
-            <PortfolioSwiper galleryID="portfolio-swiper" category={currentCategory} />
+            <motion.div
+                initial={rightInitial}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+                <PortfolioSwiper galleryID="portfolio-swiper" category={currentCategory} />
+            </motion.div>
 		</div>
         </section>
 	);

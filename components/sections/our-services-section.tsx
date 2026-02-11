@@ -1,16 +1,27 @@
 "use client";
 
-import { Accordion, AccordionItem } from "@heroui/accordion";
-import { Divider } from "@heroui/divider";
-import { Button } from "@heroui/button";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { TriangleIcon, ArrowShortIcon } from "@/components/icons";
-import { ArrowIcon } from "@/components/icons";
-import { useRouter } from "next/navigation";
 import NextLink from "next/link";
+import { motion } from "framer-motion";
 
 
 
 export const OurServicesSection = () => {
+	const isMobile = typeof window !== "undefined" &&
+		window.matchMedia("(max-width: 768px)").matches;
+	const leftInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: -32 };
+	const rightInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: 32 };
+
+	const staggerItem = {
+		hidden: { opacity: 0, y: 12 },
+		show: (index: number) => ({
+			opacity: 1,
+			y: 0,
+			transition: { duration: 0.4, ease: "easeOut", delay: index * 0.12 },
+		}),
+	};
+
 	const servicesData = [		
 		{
 			key: "1",
@@ -61,23 +72,43 @@ export const OurServicesSection = () => {
 				lg:grid lg:grid-cols-[var(--grid-cols-narrow-left)]
 				lg:items-start 
 			">
-				<div className="_left-column _headline-and-text-column
+				<motion.div
+					className="_left-column _headline-and-text-column
 					flex flex-col justify-start gap-4
 					max-w-tablet-text-max-w
 					lg:max-w-[200rem/16] 
-				">
-					<h2 className="h2 mb-h2">Naše služby</h2>					
+				"
+					initial={leftInitial}
+					whileInView={{ opacity: 1, x: 0, y: 0 }}
+					viewport={{ once: true, amount: 0.2 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+				>
+					<motion.h2
+						className="h2 mb-h2"
+						initial={leftInitial}
+						whileInView={{ opacity: 1, x: 0, y: 0 }}
+						viewport={{ once: true, amount: 0.25 }}
+						transition={{ duration: 0.6, ease: "easeOut" }}
+					>
+						Naše služby
+					</motion.h2>					
 					<p className="text-big">
 						Každá kniha je unikátem a zaslouží si <strong>výjimečnou vazbu, která ji dostane na výsluní. </strong>
 						Naše rukodělné vazby plné kvality představují mistrovství v oboru, kde se spojuje <strong>preciznost 
 						a pečlivost s nápaditostí a invencí.</strong> Výsledkem jsou vazby, 
 						<strong> které nejen skvěle vypadají, ale také vydrží věky... </strong>
 					</p>
-				</div>
-				<div className="_right-column _services-column
+				</motion.div>
+				<motion.div
+					className="_right-column _services-column
 					w-full
 					flex flex-col justify-between items-center gap-y-20 
-					lg:min-h-[30rem]">								
+					lg:min-h-[30rem]"
+					initial={rightInitial}
+					whileInView={{ opacity: 1, x: 0, y: 0 }}
+					viewport={{ once: true, amount: 0.2 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+				>								
 						<Accordion className="_services-accordion 
 							w-[calc(100%+2*var(--mobile-page-margin))] 
 							max-w-tablet-text-max-w
@@ -88,9 +119,21 @@ export const OurServicesSection = () => {
 								className:"border-stroke-light"
 							}}
 						>
-							{servicesData.map((item) => (
+							{servicesData.map((item, index) => (
 								<AccordionItem 
-									key={item.key} aria-label={item.ariaLabel} title={item.title}
+									key={item.key}
+									aria-label={item.ariaLabel}
+									title={
+										<motion.span
+											variants={staggerItem}
+											custom={index}
+											initial="hidden"
+											whileInView="show"
+											viewport={{ once: true, amount: 0.25 }}
+										>
+											{item.title}
+										</motion.span>
+									}
 									indicator={<TriangleIcon />}
 									disableIndicatorAnimation={false}
 									classNames={{
@@ -103,12 +146,26 @@ export const OurServicesSection = () => {
 										startContent: "",
 										indicator: "",
 										content: "max-w-[50rem] pt-2 pb-14 pl-[calc(2vw+2.2rem)] pr-[calc(2vw+2.2rem)] text-[500px] text-base-lg lg:text-base-lg",
-									}}>
-									{item.content}
+									}}
+								>
+									<motion.div
+										variants={staggerItem}
+										custom={index}
+										initial="hidden"
+										whileInView="show"
+										viewport={{ once: true, amount: 0.25 }}
+									>
+										{item.content}
+									</motion.div>
 								</AccordionItem>
 							))}
 						</Accordion>	
-						<div className="_button-wrapper-with-stroke 
+						<motion.div
+							initial={rightInitial}
+							whileInView={{ opacity: 1, x: 0, y: 0 }}
+							viewport={{ once: true, amount: 0.25 }}
+							transition={{ duration: 0.6, ease: "easeOut" }}
+							className="_button-wrapper-with-stroke 
 						w-full
 							grow-1 flex flex-col justify-end align-stretch
 							border-b-1 border-stroke-light overflow-hidden 
@@ -144,8 +201,8 @@ export const OurServicesSection = () => {
 									</span>
 								</NextLink>
 							</div>
-						</div>			
-				</div>
+						</motion.div>			
+				</motion.div>
 			</div>
 
 		</section>

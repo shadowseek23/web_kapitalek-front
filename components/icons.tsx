@@ -254,7 +254,7 @@ export const CloseIcon = ({
     xmlns="http://www.w3.org/2000/svg" 
     {...props}
   >
-    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(0.707105 -0.707109 0.707105 0.707109 0.707031 25.7061)" stroke="#616161"/>
-    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(-0.707105 -0.707109 -0.707105 0.707109 25.707 25.7061)" stroke="#616161"/>
+    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(0.707105 -0.707109 0.707105 0.707109 0.707031 25.7061)" stroke="black" strokeWidth={3}/>
+    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(-0.707105 -0.707109 -0.707105 0.707109 25.707 25.7061)" stroke="black" strokeWidth={3}/>
   </svg>
 );

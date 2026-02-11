@@ -37,8 +37,8 @@ export const MobileNav = () => {
                         px-4 py-4">
                     <span className="flex flex-col justify-between items-end h-6 w-8">
                         <span className="sr-only">Menu</span>
-                        <span className="block w-6 h-[1.6px] bg-black"></span>
-                        <span className="block w-9 h-[1.6px] bg-black"></span>
+                        <span className="block w-6 h-[2px] bg-black"></span>
+                        <span className="block w-9 h-[2px] bg-black"></span>
                     </span>
                 </button>
             </nav>

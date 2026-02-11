@@ -1,10 +1,13 @@
 "use client";
-import {Form} from "@heroui/form";
-import { Input, Textarea } from "@heroui/input";
-import { Select } from "@heroui/select";
-import { SelectItem } from "@heroui/select";
-import { Checkbox } from "@heroui/checkbox";
-import { Button } from "@heroui/button";
+import {
+	Button,
+	Checkbox,
+	Form,
+	Input,
+	Select,
+	SelectItem,
+	Textarea,
+} from "@heroui/react";
 
 import { useState } from "react";
 

@@ -1,19 +1,26 @@
 "use client";
+import { motion, type Variants } from "framer-motion";
 
 interface MobileNavItemProps {
   label: string;
   href: string;
   isActive?: boolean;
+  isMobileNavOpen: boolean;
+  setIsMobileNavOpen: (isOpen: boolean) => void;
+  variants?: Variants;
 }
 
-export const MobileNavItem = ({  label, href, isActive = false, isMobileNavOpen, setIsMobileNavOpen } ) => {
+export const MobileNavItem = ({ label, href, isActive = false, isMobileNavOpen, setIsMobileNavOpen, variants }: MobileNavItemProps ) => {
     return (
-        <li className="__mobile-nav-item
-            block
-            w-full            
-            b- border-t-1 border-t-[rgba(0,0,0,0.15)]
-            last:border-b-1 border-b-[rgba(0,0,0,0.15)]
-        ">
+        <motion.li
+            className="__mobile-nav-item
+                block
+                w-full            
+                b- border-t-1 border-t-[rgba(0,0,0,0.8)]
+                last:border-b-1 border-b-[rgba(0,0,0,0.8)]
+            "
+            variants={variants}
+        >
             <a href={href} 
                 onClick={(e) => {setIsMobileNavOpen(false); e.stopPropagation();}}
                 className="navbar__item-inner-link
@@ -30,10 +37,10 @@ export const MobileNavItem = ({  label, href, isActive = false, isMobileNavOpen,
                     hover:border-b-1 
                     hover:border-b-[rgba(0,0,0,0.15)]
                     transition-[margin] duration-150
-                    
+                    text-black
                 ">
                 {label}
             </a>
-        </li>
+        </motion.li>
     )
 }

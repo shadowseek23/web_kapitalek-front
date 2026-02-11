@@ -2,8 +2,14 @@
 
 import Image from 'next/image';
 import Typewriter from 'typewriter-effect';
+import { motion } from "framer-motion";
 
 export const HeroSection = () => {
+	const isMobile = typeof window !== "undefined" &&
+		window.matchMedia("(max-width: 768px)").matches;
+	const leftInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: -40 };
+	const rightInitial = isMobile ? { opacity: 0, y: 24 } : { opacity: 0, x: 40 };
+
 	return (
 
 		<section id="hero" className="border-default-b">
@@ -17,12 +23,18 @@ export const HeroSection = () => {
 				lg:h-[60vh] min-h-[calc(600rem/16)] lg:max-h-[calc(1200rem/16)]
 			">
 
-				<div className="_left-column _top-column 
+				<motion.div
+					className="_left-column _top-column 
 					pt-[4rem]
 					flex items-center justify-center 
 					lg:p-0
 					lg:border-r-1 lg:border-stroke
-				">
+				"
+					initial={leftInitial}
+					whileInView={{ opacity: 1, x: 0, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+				>
 					<div className="flex justify-center">
 						<Image 
 							src="/Kapitalek_logo_sand_and_black.png" 
@@ -37,12 +49,18 @@ export const HeroSection = () => {
 							sizes="(max-width: 768px) 300px, (max-width: 1200px) 300px, 300px"
 						/>
 					</div>
-				</div>
-				<div className="_right-column _bottom-column
+				</motion.div>
+				<motion.div
+					className="_right-column _bottom-column
 					flex items-center justify-center
 					py-[6vh]
 					sm:px-[3vw] lg:px-0 
-				">
+				"
+					initial={rightInitial}
+					whileInView={{ opacity: 1, x: 0, y: 0 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.6, ease: "easeOut" }}
+				>
 				<div className="_quotes-container
 					relative w-full max-w-200 py-[3rem]
 					
@@ -83,7 +101,7 @@ export const HeroSection = () => {
 								Vytváříme vyjímečné knihy pro všechny, kdo ocení kvalitu a cit pro detail.
 							</h3>
 					</div>
-				</div>
+				</motion.div>
 
 			</div>
 		</section>
