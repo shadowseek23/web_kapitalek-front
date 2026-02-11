@@ -6,16 +6,17 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
+
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { NavbarDesktopCentered } from "@/components/navigation/NavbarDesktopCentered";
 import { MobileNav } from "@/components/navigation/mobile/MobileNav";
-import {Footer} from "@/components/Footer"
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   icons: {
@@ -44,19 +45,19 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <div id="top"></div>
+        <div id="top" />
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <section className="section bg-white border-default-b
-            border-b-1">
+          <section
+            className="section bg-white border-default-b
+            border-b-1"
+          >
             <div className="container">
-            <NavbarDesktopCentered breakpoint="lg" />
-            <MobileNav breakpoint="lg" />
+              <NavbarDesktopCentered />
+              <MobileNav />
             </div>
           </section>
-            <main className="">
-              {children}
-            </main>
-            <Footer />
+          <main className="">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

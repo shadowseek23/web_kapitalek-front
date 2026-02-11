@@ -1,4 +1,4 @@
-import { Fira_Code as FontMono, Geologica as FontSans } from "next/font/google";
+import { Geologica as FontSans } from "next/font/google";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -6,4 +6,3 @@ export const fontSans = FontSans({
   display: "swap",
   preload: true,
 });
-

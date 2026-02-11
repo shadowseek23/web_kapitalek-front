@@ -2,8 +2,13 @@ import * as React from "react";
 
 import { IconSvgProps } from "@/types";
 
-export const TriangleIcon = ({ width = "14", height = "13", position = "down" }) => {
+export const TriangleIcon = ({
+  width = "14",
+  height = "13",
+  position = "down",
+}) => {
   let className = "";
+
   switch (position) {
     case "down":
       className = "rotate-180";
@@ -20,60 +25,132 @@ export const TriangleIcon = ({ width = "14", height = "13", position = "down" })
     default:
       className = "";
   }
-	return (
-		<svg width={width} height={height} className={className} viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M7 0.758789L13.9282 12.7588L0.0717969 12.7588L7 0.758789Z" fill="#CCC8C8"/>
-		</svg>
-	);
-}
-export const ArrowIcon = (strokeWidth = 1, stroke = "#616161") => {
-	return (
-    <svg className="h-5"
-      width="154" height="27" viewBox="0 0 154 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0.699219 13.8154L152.404 13.7695" stroke={stroke} strokeWidth={strokeWidth}/>
-      <line x1="140.107" y1="26.4609" x2="153.147" y2="13.4209" stroke={stroke} strokeWidth={strokeWidth} />
-      <line y1="-0.5" x2="17.6765" y2="-0.5" transform="matrix(0.7045 0.709704 0.709704 -0.7045 140.641 0.816406)" stroke={stroke} strokeWidth={strokeWidth}/>
+
+  return (
+    <svg
+      className={className}
+      fill="none"
+      height={height}
+      viewBox="0 0 14 13"
+      width={width}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 0.758789L13.9282 12.7588L0.0717969 12.7588L7 0.758789Z"
+        fill="#CCC8C8"
+      />
     </svg>
-	);
-}
-export const ArrowShortIcon = ({height = "27", width = "", direction = "left", strokeWidth = 1, stroke = "#616161", extraClassName = ""}) => {
-	let className = "max-w-[100%] ";
-	switch (direction) {
-		case "right":
-			className += "rotate-180";
-			break;
-		case "left":
-			className += "";
-			break;
-		default:
-			className += "";
-	}
+  );
+};
+export const ArrowIcon = (strokeWidth = 1, stroke = "#616161") => {
+  return (
+    <svg
+      className="h-5"
+      fill="none"
+      height="27"
+      viewBox="0 0 154 27"
+      width="154"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.699219 13.8154L152.404 13.7695"
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+      />
+      <line
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        x1="140.107"
+        x2="153.147"
+        y1="26.4609"
+        y2="13.4209"
+      />
+      <line
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        transform="matrix(0.7045 0.709704 0.709704 -0.7045 140.641 0.816406)"
+        x2="17.6765"
+        y1="-0.5"
+        y2="-0.5"
+      />
+    </svg>
+  );
+};
+export const ArrowShortIcon = ({
+  height = "27",
+  width = "",
+  direction = "left",
+  strokeWidth = 1,
+  stroke = "#616161",
+  extraClassName = "",
+}) => {
+  let className = "max-w-[100%] ";
+
+  switch (direction) {
+    case "right":
+      className += "rotate-180";
+      break;
+    case "left":
+      className += "";
+      break;
+    default:
+      className += "";
+  }
   className += " " + extraClassName;
 
-  width = width || height * (82 / 27);    
+  const finalWidth = width || Number(height) * (82 / 27);
 
-	return (
+  return (
     <span className={className}>
-      <svg width={width} height={height} className={className} viewBox="0 0 82 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M81.1914 13.4316H1.09595" stroke={stroke} strokeWidth={strokeWidth}/>
-        <line y1="-0.5" x2="18.4414" y2="-0.5" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 13.0391 26.4766)" stroke={stroke} strokeWidth={strokeWidth}/>
-        <line x1="13.2142" y1="0.830766" x2="0.761101" y2="13.3759" stroke={stroke} strokeWidth={strokeWidth}/>
+      <svg
+        className={className}
+        fill="none"
+        height={height}
+        viewBox="0 0 82 27"
+        width={finalWidth}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M81.1914 13.4316H1.09595"
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+        />
+        <line
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 13.0391 26.4766)"
+          x2="18.4414"
+          y1="-0.5"
+          y2="-0.5"
+        />
+        <line
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          x1="13.2142"
+          x2="0.761101"
+          y1="0.830766"
+          y2="13.3759"
+        />
       </svg>
     </span>
-	);
-}
+  );
+};
 
-export const Logo: React.FC<IconSvgProps> = ({
+export const Logo = ({
   size = 36,
   width,
   height,
   ...props
-}) => (
+}: {
+  size?: number;
+  width?: number | string;
+  height?: number | string;
+} & React.ImgHTMLAttributes<HTMLImageElement>) => (
   <img
-    src="/logo_circle.png"
     alt="Logo"
-    width={size || width || 36}
     height={size || height || 36}
+    src="/logo_circle.png"
+    width={size || width || 36}
     {...props}
   />
 );
@@ -246,15 +323,29 @@ export const CloseIcon = ({
   height = 26,
   ...props
 }: IconSvgProps) => (
-  <svg 
-    width={size || width} 
-    height={size || height} 
-    viewBox="0 0 27 26" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg" 
+  <svg
+    fill="none"
+    height={size || height}
+    viewBox="0 0 27 26"
+    width={size || width}
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(0.707105 -0.707109 0.707105 0.707109 0.707031 25.7061)" stroke="black" strokeWidth={3}/>
-    <line y1="-0.5" x2="35.3543" y2="-0.5" transform="matrix(-0.707105 -0.707109 -0.707105 0.707109 25.707 25.7061)" stroke="black" strokeWidth={3}/>
+    <line
+      stroke="black"
+      strokeWidth={3}
+      transform="matrix(0.707105 -0.707109 0.707105 0.707109 0.707031 25.7061)"
+      x2="35.3543"
+      y1="-0.5"
+      y2="-0.5"
+    />
+    <line
+      stroke="black"
+      strokeWidth={3}
+      transform="matrix(-0.707105 -0.707109 -0.707105 0.707109 25.707 25.7061)"
+      x2="35.3543"
+      y1="-0.5"
+      y2="-0.5"
+    />
   </svg>
 );

@@ -2,7 +2,8 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "KAPITÁLEK: Knihařské mistrovství v každé vazbě",
-  description: "Vytváříme vyjímečné knihy pro všechny kdo ocení kvalitu a cit pro detail.",
+  description:
+    "Vytváříme vyjímečné knihy pro všechny kdo ocení kvalitu a cit pro detail.",
   navItemsLeft: [
     {
       label: "Naše služby",

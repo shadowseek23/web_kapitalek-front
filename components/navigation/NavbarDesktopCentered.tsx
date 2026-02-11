@@ -3,12 +3,13 @@
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-import { siteConfig } from "@/config/site";
 import { NavItem } from "./NavItem";
 import { NavDropdownItem } from "./NavDropdownItem";
 import { NavbarSocial } from "./NavbarSocial";
 import { NavbarLogo } from "./NavbarLogo";
 import { NavbarCTA } from "./NavbarCTA";
+
+import { siteConfig } from "@/config/site";
 
 // Centered Navbar Component
 export const NavbarDesktopCentered = () => {
@@ -24,7 +25,11 @@ export const NavbarDesktopCentered = () => {
 
   const item = {
     hidden: { opacity: 0, y: -8 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
   };
 
   const menuContainer = {
@@ -37,37 +42,52 @@ export const NavbarDesktopCentered = () => {
 
   const menuItem = {
     hidden: { opacity: 0, y: -8 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
   };
 
   const isActive = (href: string) => {
     return pathname === href;
   };
 
-  const renderNavItems = (items: typeof siteConfig.navItemsLeft, isRightSide = false) => {
+  const renderNavItems = (
+    items: typeof siteConfig.navItemsLeft,
+    isRightSide = false,
+  ) => {
     return items.map((item, index) => {
       const isLast = isRightSide && index === items.length - 1;
 
       if ((item as any).dropdown) {
         return (
-          <motion.div key={item.href} className="flex items-stretch" variants={menuItem}>
+          <motion.div
+            key={item.href}
+            className="flex items-stretch"
+            variants={menuItem}
+          >
             <NavDropdownItem
-              label={item.label}
-              href={item.href}
               dropdown={(item as any).dropdown}
+              href={item.href}
               isActive={isActive(item.href)}
+              label={item.label}
             />
           </motion.div>
         );
       }
 
       return (
-        <motion.div key={item.href} className="flex items-stretch" variants={menuItem}>
+        <motion.div
+          key={item.href}
+          className="flex items-stretch"
+          variants={menuItem}
+        >
           <NavItem
-            label={item.label}
             href={item.href}
             isActive={isActive(item.href)}
             isLastChild={isLast}
+            label={item.label}
           />
         </motion.div>
       );
@@ -76,19 +96,23 @@ export const NavbarDesktopCentered = () => {
 
   return (
     <motion.nav
-      id="mainmenu_desktop" 
-      className="hidden lg:flex items-center items-stretch justify-center h-24"
-      role="navigation"
-      aria-label="main navigation"
-      variants={container}
-      initial="hidden"
       animate="visible"
+      aria-label="main navigation"
+      className="hidden lg:flex items-center items-stretch justify-center h-24"
+      id="mainmenu_desktop"
+      initial="hidden"
+      role="navigation"
+      variants={container}
     >
-      <div id="mainmenu-left" className="flex justify-between items-stretch flex-grow basis-3xs">            
+      <div
+        className="flex justify-between items-stretch flex-grow basis-3xs"
+        id="mainmenu-left"
+      >
         <motion.div className="flex items-stretch" variants={item}>
           <NavbarSocial />
         </motion.div>
-        {/* left menu items*/} <motion.div
+        {/* left menu items*/}{" "}
+        <motion.div
           className="flex grow-1 items-stretch justify-end basis-sm"
           variants={menuContainer}
         >
@@ -98,13 +122,17 @@ export const NavbarDesktopCentered = () => {
       <motion.div className="flex items-stretch" variants={item}>
         <NavbarLogo />
       </motion.div>
-      <div id="mainmenu-right" className="flex justify-between items-stretch flex-grow basis-3xs">
-        {/* right menu items*/}<motion.div 
+      <div
+        className="flex justify-between items-stretch flex-grow basis-3xs"
+        id="mainmenu-right"
+      >
+        {/* right menu items*/}
+        <motion.div
           className="flex grow-1  items-stretch justify-start basis-sm"
           variants={menuContainer}
         >
           {renderNavItems(siteConfig.navItemsRight, true)}
-        </motion.div>         
+        </motion.div>
         <motion.div className="flex items-stretch" variants={item}>
           <NavbarCTA />
         </motion.div>

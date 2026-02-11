@@ -10,20 +10,26 @@ interface MobileNavItemProps {
   variants?: Variants;
 }
 
-export const MobileNavItem = ({ label, href, isActive = false, isMobileNavOpen, setIsMobileNavOpen, variants }: MobileNavItemProps ) => {
-    return (
-        <motion.li
-            className="__mobile-nav-item
+export const MobileNavItem = ({
+  label,
+  href,
+  isActive = false,
+  isMobileNavOpen,
+  setIsMobileNavOpen,
+  variants,
+}: MobileNavItemProps) => {
+  return (
+    <motion.li
+      className="__mobile-nav-item
                 block
                 w-full            
                 b- border-t-1 border-t-[rgba(0,0,0,0.8)]
                 last:border-b-1 border-b-[rgba(0,0,0,0.8)]
             "
-            variants={variants}
-        >
-            <a href={href} 
-                onClick={(e) => {setIsMobileNavOpen(false); e.stopPropagation();}}
-                className="navbar__item-inner-link
+      variants={variants}
+    >
+      <a
+        className="navbar__item-inner-link
                     block
                     
                     
@@ -38,9 +44,15 @@ export const MobileNavItem = ({ label, href, isActive = false, isMobileNavOpen, 
                     hover:border-b-[rgba(0,0,0,0.15)]
                     transition-[margin] duration-150
                     text-black
-                ">
-                {label}
-            </a>
-        </motion.li>
-    )
-}
+                "
+        href={href}
+        onClick={(e) => {
+          setIsMobileNavOpen(false);
+          e.stopPropagation();
+        }}
+      >
+        {label}
+      </a>
+    </motion.li>
+  );
+};

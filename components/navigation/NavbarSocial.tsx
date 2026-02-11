@@ -6,7 +6,13 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
 import { SocialIcon } from "@/components/social-icon";
 
-export const NavbarSocial = ({ gap = "3", sizeResponsive = false }: { gap?: string }) => {
+export const NavbarSocial = ({
+  gap = "3",
+  sizeResponsive = false,
+}: {
+  gap?: string;
+  sizeResponsive?: boolean;
+}) => {
   const size = "sm";
   const container = {
     hidden: { opacity: 0 },
@@ -18,7 +24,11 @@ export const NavbarSocial = ({ gap = "3", sizeResponsive = false }: { gap?: stri
 
   const item = {
     hidden: { opacity: 0, y: 8 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
   };
 
   const items = [
@@ -42,17 +52,18 @@ export const NavbarSocial = ({ gap = "3", sizeResponsive = false }: { gap?: stri
   return (
     <motion.div
       className="flex items-center flex-row gap-4"
-      variants={container}
       initial="hidden"
-      whileInView="visible"
+      variants={container}
       viewport={{ once: true, amount: 0.3 }}
+      whileInView="visible"
     >
       {items.map((itemData) => (
         <motion.div key={itemData.ariaLabel} variants={item}>
           <SocialIcon
+            ariaLabel={itemData.ariaLabel}
             href={itemData.href}
             icon={itemData.icon}
-            ariaLabel={itemData.ariaLabel}
+            size={size}
             sizeResponsive={sizeResponsive}
           />
         </motion.div>
